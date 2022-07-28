@@ -176,7 +176,7 @@ You can learn more about the changes in the documentation [here](https://docs.st
 
 But here is a brief overview of what changed.
 
-![configfolderchanges](https://user-images.githubusercontent.com/6153188/181595546-944bea16-4f94-49d5-91e8-aaea55c64d77.gif)
+<img width="809" alt="configfoderchanges" src="https://user-images.githubusercontent.com/6153188/181596302-7946c904-02b3-42ca-a8a0-6bf4106912b5.png">
 
 We will make this easy on ourselves.
 
@@ -184,11 +184,11 @@ First, open your v3 project in file explorer, navigate to the `config` folder, a
 
 Then open the reference v4 project. Navigate to your config folder, select all items, and copy them to your v3 project.
 
-![[configfolderchanges.gif]]
+![configfolderchanges](https://user-images.githubusercontent.com/6153188/181596447-6b3f6472-0495-470b-8127-a19f3a682fe0.gif)
 
 Your v3 project `config` folder should look like this.
 
-![[finalfolderstructure 1.gif]]
+![finalfolderstructure 1](https://user-images.githubusercontent.com/6153188/181596572-b47b49a1-ffd9-4dde-baab-94b8bc0e64ae.gif)
 
 After making the changes, let's save what we just did by running the following command.
 
@@ -210,7 +210,7 @@ You can do so by running the following commands.
 
 Codemods is a script that will allow you to easily update the folder structure, content schemas, and other items to make the migration process easier.
 
-![[codemods.png]]
+![codemods](https://user-images.githubusercontent.com/6153188/181596729-d857b753-d5be-4946-841e-06ba9ac85919.png)
 
 You can learn more about it [here](https://github.com/strapi/codemods).
 
@@ -417,11 +417,12 @@ We will have to update the routes, controllers, and services in each content typ
 
 **_note_**: in the future, this will be done with **_codemods_**, but as of this writing, we have to make these changes manually.
 
-![[apifolder.png]]
+<img width="481" alt="apifolder" src="https://user-images.githubusercontent.com/6153188/181596988-b0a5838b-cbbe-4b73-bf60-99ae36f77638.png">
+
 
 Let's use the `restaurant` folder as our example. What we will do here is what you must do in all other folders in the `api` folder.
 
-![[routescontrollersandservices.png]]
+<img width="461" alt="routescontrollersandservices" src="https://user-images.githubusercontent.com/6153188/181597032-d364e926-bbdf-45e1-adec-b6f5683e4514.png">
 
 Let's look at the `restaurant.js` file inside the `routes` folder.
 
@@ -881,13 +882,13 @@ You can learn more about it [here](https://docs.strapi.io/developer-docs/latest/
 
 Let's run `yarn develop` and see what happens.
 
-![[strapi4screen.png]]
+<img width="816" alt="strapi4screen" src="https://user-images.githubusercontent.com/6153188/181597372-ee739bf6-42d2-4916-a777-3907139ef10a.png">
 
 Great success. Our app builds.
 
 You can now create an admin user and log in.
 
-![[strapiadmin.png]]
+<img width="1506" alt="strapiadmin" src="https://user-images.githubusercontent.com/6153188/181597418-3b600308-acb6-4b9e-890d-9291f7d9f8cc.png">
 
 We still need to go through our codebase and manually update any of our custom **_routes_**, **_controllers_**, **_services_**, and any other customizations you may have.
 
@@ -1143,11 +1144,12 @@ To test it out, first, we must enable the controller in our Strapi App.
 
 You can do that by going into settings > roles > public > restaurant and checking the **_find_** endpoint.
 
-![[restaurantcontroller.gif]]
+![restaurantcontroller](https://user-images.githubusercontent.com/6153188/181597546-89909e0b-f311-4f11-901e-8e534fb3321c.gif)
+
 
 Using Insomnia to make a GET request to our custom controller we can see that we are now returning our date field in our `meta` response object.
 
-![[customcontrollerresponse.png]]
+<img width="983" alt="customcontrollerresponse" src="https://user-images.githubusercontent.com/6153188/181597646-8c268487-f3a8-44c1-a668-289308bf39bd.png">
 
 Using Insomnia, we make a GET request to our custom controller. We can see that we are now returning our date field in our `meta` response object.
 
@@ -1203,11 +1205,11 @@ module.exports = {
 
 Before testing our custom route, once again, we have to enable the endpoint within Strapi.
 
-![[customroute.gif]]
+![customroute](https://user-images.githubusercontent.com/6153188/181597734-3206969a-ed57-4ec0-8498-b4f5d2fff248.gif)
 
 Let's test the new endpoint `/api/restaurants/with-meta-date` in Insomnia.
 
-![[withcustomroute.png]]
+<img width="1331" alt="withcustomroute" src="https://user-images.githubusercontent.com/6153188/181597894-0541386b-c8dc-4077-835e-9bd6fe6988ab.png">
 
 As we can see, our custom route and controller are working.
 
@@ -1349,11 +1351,11 @@ We should probably add a restaurant entry first before we test it.
 
 I added one restaurant entry so we can see the response when we call our custom resolver.
 
-![[catentry.png]]
+<img width="1506" alt="catentry" src="https://user-images.githubusercontent.com/6153188/181598059-ce720110-3152-4030-b315-47bc1cf41878.png">
 
 Once you run the query, you will see the following result.  
 
-![[graphqlresult.png]]
+<img width="1504" alt="graphqlresult" src="https://user-images.githubusercontent.com/6153188/181598185-db2ce6a5-dd9f-4b75-b20b-7e8015a730f8.png">
 
 We will also see our console.log statement from our resolver on line 46 to confirm that we are hitting our custom GraphQl resolver.
 
