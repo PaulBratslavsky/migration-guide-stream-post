@@ -497,7 +497,9 @@ Make sure you replace the appropriate `api-name` and `content-type-name`. It wil
 
 Make sure you replace the remaining routes in the rest of the content types.
 
-I will link to a repo where you can see the final changes just in case you run into issues.
+I will link to a repo where you can see the final changes just in case you run into issues. 
+
+[Final Code](https://github.com/PaulBratslavsky/demo-migration-final-code)
 
 After replacing all the routes, you will have a new error when you run `yarn develop`.
 
