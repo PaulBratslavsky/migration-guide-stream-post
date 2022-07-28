@@ -56,11 +56,12 @@ If GraphQL is still something you would like to use from your previous version, 
 
 `code migration diagram`
 
-![[Screen Shot 2022-07-25 at 2.17.15 PM.png]]
+<img width="1112" alt="Screen Shot 2022-07-25 at 2 17 15 PM" src="https://user-images.githubusercontent.com/6153188/181594611-1bbb9e07-6943-4576-af6c-6390567db023.png">
+
 
 `database migration diagram`
 
-![[Screen Shot 2022-07-25 at 2.18.26 PM.png]]
+<img width="1361" alt="Screen Shot 2022-07-25 at 2 18 26 PM" src="https://user-images.githubusercontent.com/6153188/181594664-0b3c615d-14e0-452c-8f56-7e1c11858349.png">
 
 In this post, we will only cover the **_code migration_** process, but once this is complete, you will be able to move to the **_data migration_** step in a future post.
 
@@ -117,10 +118,12 @@ Finally, run `yarn build && yarn develop` to start the application.
 
 After everything is done, navigate to `http://localhost:1337/admin`. You should now see the registration page. Go ahead and create an admin account and log in.
 
-![[strapilogin.png]]
+<img width="667" alt="strapilogin" src="https://user-images.githubusercontent.com/6153188/181594748-b5c2b164-1b5f-46b8-a6ea-cb91f290cc1d.png">
+
 Once you are logged in, you should be able to see all of content types and data.
 
-![[data.png]]
+<img width="1509" alt="data" src="https://user-images.githubusercontent.com/6153188/181595012-df2ccb88-6add-4f4a-90db-23625df62267.png">
+
 
 Great success. We now have a Strapi v3 project running that we can use to learn about the migration process.
 
@@ -155,7 +158,8 @@ Let's rename it to `old_data.db`. Afterward, you can run `yarn develop`, which w
 
 You will be prompted to create a new admin user since we are now using a new database.
 
-![[strapilogin 1.png]]
+<img width="667" alt="strapilogin" src="https://user-images.githubusercontent.com/6153188/181594748-b5c2b164-1b5f-46b8-a6ea-cb91f290cc1d.png">
+
 So go ahead and create a new user admin and login. You should have no data in your app.
 
 We will save the `old_data.db` to use in a later post when we cover data migration.
@@ -164,7 +168,7 @@ We will save the `old_data.db` to use in a later post when we cover data migrati
 
 Next, let's update the `config` folder. Currently, our structure looks like the left side.
 
-![[v3vsv4configfolder.png]]
+![v3vsv4configfolder](https://user-images.githubusercontent.com/6153188/181595424-4f5bec17-55c8-4012-bbbe-b537307eafce.png)
 
 As you can see, there are differences in the folder structure from Strapi v3 to Strapi v4 below.
 
@@ -172,7 +176,7 @@ You can learn more about the changes in the documentation [here](https://docs.st
 
 But here is a brief overview of what changed.
 
-![[configfoderchanges.png]]
+![configfolderchanges](https://user-images.githubusercontent.com/6153188/181595546-944bea16-4f94-49d5-91e8-aaea55c64d77.gif)
 
 We will make this easy on ourselves.
 
