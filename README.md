@@ -13,26 +13,25 @@ We won't be able to cover all the nuances of the process. Still, our goal is to 
 ## Outline
 
 - Things To Consider
-- the migration process overview
-- the migration
-  - intro
-  - set up the base project
-  - set up a reference project
-  - migration steps walkthrough
-    - step 1: point to a new database
-    - step 2: updating the config.js folder
-    - step 3: using codemods
-    - step 4: updating the dependencies
-    - step 5: updating the generic routes
-    - step 6: updating the generic controllers
-    - step 7: updating the generic services
-    - note on errors
-- Strapi customizations
-  - how to create a custom controller
-  - how to create a custom resolver
-  - where to find help
+- The Migration Process Overview
+- The Migration
+  - Intro
+  - Set Up the Base Project
+  - Set Up a Reference Project
+  - Migration Steps Walkthrough
+    - Step 1: Point to a New Database
+    - Step 2: Updating the config.js Folder
+    - Step 3: Using Codemods
+    - Step 4: Updating the Dependencies
+    - Step 5: Updating the Generic Routes
+    - Step 6: Updating the Generic Controller
+    - Step 7: Updating the Generic Services
+    - Note on Errors
+- Strapi Customizations
+  - How To Create a Custom Controller
+  - How To Create a Custom Resolver
+  - Where To Find Help
 - Conclusion
-
 
 ## Things To Consider
 
@@ -57,7 +56,6 @@ If GraphQL is still something you would like to use from your previous version, 
 `code migration diagram`
 
 <img width="1112" alt="Screen Shot 2022-07-25 at 2 17 15 PM" src="https://user-images.githubusercontent.com/6153188/181594611-1bbb9e07-6943-4576-af6c-6390567db023.png">
-
 
 `database migration diagram`
 
@@ -103,9 +101,8 @@ It is an excellent example because it has some customizations that will allow us
 
 Let's go ahead and clone the Food Advisor Strapi instance by running the following command:
 
-```bash
-	git clone https://github.com/PaulBratslavsky/demoMigration.git demomigration
-
+```sh
+  git clone https://github.com/PaulBratslavsky/demoMigration.git demomigration
 ```
 
 After cloning the repo, change directories to `demomigration.`
@@ -120,10 +117,9 @@ After everything is done, navigate to `http://localhost:1337/admin`. You should 
 
 <img width="667" alt="strapilogin" src="https://user-images.githubusercontent.com/6153188/181594748-b5c2b164-1b5f-46b8-a6ea-cb91f290cc1d.png">
 
-Once you are logged in, you should be able to see all of content types and data.
+Once you are logged in, you should be able to see all of the content types and data.
 
 <img width="1509" alt="data" src="https://user-images.githubusercontent.com/6153188/181595012-df2ccb88-6add-4f4a-90db-23625df62267.png">
-
 
 Great success. We now have a Strapi v3 project running that we can use to learn about the migration process.
 
@@ -137,7 +133,7 @@ Make sure you create it in a different folder, not in the current project. You c
 	npx create-strapi-app@latest reference --quickstart
 ```
 
-## Migration Streps Walkthrough
+## Migration Steps Walkthrough
 
 ### Step 1: Point To a New Database
 
@@ -160,7 +156,9 @@ You will be prompted to create a new admin user since we are now using a new dat
 
 <img width="667" alt="strapilogin" src="https://user-images.githubusercontent.com/6153188/181594748-b5c2b164-1b5f-46b8-a6ea-cb91f290cc1d.png">
 
-So go ahead and create a new user admin and login. You should have no data in your app.
+**Important**: do not create a new user admin and login. Wait until you complete all the code migration steps to initialize the database.
+
+It's not a big deal if you do. You will juwst have to delete it once more and reinitialize the database when running v4.
 
 We will save the `old_data.db` to use in a later post when we cover data migration.
 
@@ -236,7 +234,7 @@ Next, select the `Application` option.
 	  Only Dependencies
 ```
 
-Next, set enter your root path for your Strapi application `./` and pres enter to continue.
+Next, set enter your root path for your Strapi application `./` and press enter to continue.
 
 ```bash
 	? What do you want to migrate? Application
@@ -419,7 +417,6 @@ We will have to update the routes, controllers, and services in each content typ
 
 <img width="481" alt="apifolder" src="https://user-images.githubusercontent.com/6153188/181596988-b0a5838b-cbbe-4b73-bf60-99ae36f77638.png">
 
-
 Let's use the `restaurant` folder as our example. What we will do here is what you must do in all other folders in the `api` folder.
 
 <img width="461" alt="routescontrollersandservices" src="https://user-images.githubusercontent.com/6153188/181597032-d364e926-bbdf-45e1-adec-b6f5683e4514.png">
@@ -497,7 +494,7 @@ Make sure you replace the appropriate `api-name` and `content-type-name`. It wil
 
 Make sure you replace the remaining routes in the rest of the content types.
 
-I will link to a repo where you can see the final changes just in case you run into issues. 
+I will link to a repo where you can see the final changes just in case you run into issues.
 
 [Final Code](https://github.com/PaulBratslavsky/demo-migration-final-code)
 
@@ -1002,7 +999,6 @@ module.exports = createCoreController("api::restaurant.restaurant");
 //     return restaurant;
 //   }
 // };
-
 ```
 
 In the [migration guide](https://docs.strapi.io/developer-docs/latest/update-migration-guides/migration-guides/v4/code/backend/controllers.html) under the controller's section, we can take a look and see the difference between v3 and v4.
@@ -1148,8 +1144,7 @@ You can do that by going into settings > roles > public > restaurant and checkin
 
 ![restaurantcontroller](https://user-images.githubusercontent.com/6153188/181597546-89909e0b-f311-4f11-901e-8e534fb3321c.gif)
 
-
-Using Insomnia to make a GET request to our custom controller we can see that we are now returning our date field in our `meta` response object.
+Using Insomnia to make a GET request to our custom controller, we can see that we are now returning our date field in our `meta` response object.
 
 <img width="983" alt="customcontrollerresponse" src="https://user-images.githubusercontent.com/6153188/181597646-8c268487-f3a8-44c1-a668-289308bf39bd.png">
 
@@ -1219,10 +1214,9 @@ The above example should give you a good start on how to migrate custom routes a
 
 Next, let's see how we can create a custom resolver with GraphQl.
 
-
 ### How to create a custom GraphQl resolver
 
-Finally, let's look at how we can create custom GraphQl resolvers.  
+Finally, let's look at how we can create custom GraphQl resolvers.
 
 But first, let's review what changed from Strapi v3 to v4.
 
@@ -1234,8 +1228,8 @@ In Strapi v4, [GraphQL](https://docs.strapi.io/developer-docs/latest/plugins/gr
 
 Migrating GraphQL resolvers to Strapi v4 requires:
 
--   moving the Strapi v3 logic, found in `./api/<api-name>/config/schema.graphql.js` files, to [the `register` method](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/functions.html#register) found in the `./src/index.js` file of Strapi v4
--   and adapting the existing Strapi v3 code to take advantage of the GraphQL extension service introduced in Strapi v4, accessible through `strapi.plugin(’graphql’).service(’extension’)`.
+- moving the Strapi v3 logic, found in `./api/<api-name>/config/schema.graphql.js` files, to [the `register` method](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/functions.html#register) found in the `./src/index.js` file of Strapi v4
+- and adapting the existing Strapi v3 code to take advantage of the GraphQL extension service introduced in Strapi v4, accessible through `strapi.plugin(’graphql’).service(’extension’)`.
 
 You can read more in the documentation [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/migration-guides/v4/code/backend/graphql.html)
 
@@ -1243,7 +1237,7 @@ For our example, we will create a custom GraphQL resolver based on the above doc
 
 Let's take a look inside the `src/index.js` file. We should see the following.
 
-``` javascript
+```javascript
 "use strict";
 
 module.exports = {
@@ -1270,7 +1264,7 @@ module.exports = {
 
 Let's add the following code inside the `register` function.
 
-``` javascript
+```javascript
 
 register({ strapi }) {
    const extensionService = strapi.service("plugin::graphql.extension");
@@ -1281,9 +1275,9 @@ This will allow us to extend the GraphQL plugin and add custom resolvers.
 
 We will write our custom resolver in this file directly, but you don't have to as long as you reference it here.
 
-Let's override our find resolver.  Go ahead and update the code inside the `register` function to the following.
+Let's override our find resolver. Go ahead and update the code inside the `register` function to the following.
 
-``` javascript
+```javascript
   register({ strapi }) {
     const extensionService = strapi.service('plugin::graphql.extension');
 
@@ -1295,7 +1289,7 @@ Let's override our find resolver.  Go ahead and update the code inside the `regi
                   pagination: PaginationArg = {}
                   sort: [String] = []
                   publicationState: PublicationState = LIVE
-                  ): RestaurantEntityResponseCollection  
+                  ): RestaurantEntityResponseCollection
               }
           `,
       resolvers: {
@@ -1334,7 +1328,7 @@ You can learn more about Strapi GraphQL [here](https://docs.strapi.io/developer-
 
 Once you have made the following changes, restart the server with `yarn develop`, navigate to `http://localhost:1337/graphql`, and add the following query.
 
-``` bash
+```bash
     query {
       restaurants {
       	data {
@@ -1355,13 +1349,13 @@ I added one restaurant entry so we can see the response when we call our custom 
 
 <img width="1506" alt="catentry" src="https://user-images.githubusercontent.com/6153188/181598059-ce720110-3152-4030-b315-47bc1cf41878.png">
 
-Once you run the query, you will see the following result.  
+Once you run the query, you will see the following result.
 
 <img width="1504" alt="graphqlresult" src="https://user-images.githubusercontent.com/6153188/181598185-db2ce6a5-dd9f-4b75-b20b-7e8015a730f8.png">
 
 We will also see our console.log statement from our resolver on line 46 to confirm that we are hitting our custom GraphQl resolver.
 
-``` bash
+```bash
 ################## {
   nodes: [
     {
@@ -1388,19 +1382,18 @@ We will also see our console.log statement from our resolver on line 46 to confi
 } ##################
 ```
 
-
 ## Conclusion
-You now have the tools to feel more comfortable with the migration process.  
 
-This is not the definitive guide, but it is a start. 
+You now have the tools to feel more comfortable with the migration process.
+
+This is not the definitive guide, but it is a start.
 
 We are also making additional video resources to dive into more detail on specific topics around the migration process.
 
 I hope this article and its accommodating stream on youtube have helped to demystify the migration process and where to find the resources.
 
-Let's continue the discussion of [Discord](https://discord.com/invite/strapi). 
+Let's continue the discussion of [Discord](https://discord.com/invite/strapi).
 
-This was a long article, so thank you for your support and patience.  
+This was a long article, so thank you for your support and patience.
 
 If you have any issues or questions, please feel free to connect with me on Discord inside the v3 to v4 migration channel.
-
